@@ -11,5 +11,6 @@ if __name__ == '__main__':
                                      save_tokenizer=True,
                                      epochs_per_save=1,
                                      tokenizer_save_path='./tokeinzer',
-                                     model_save_path='./model')
+                                     model_save_path='./model',
+                                     sample_display='人世几回伤往事')
     train(hyperparameters)
