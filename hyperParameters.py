@@ -4,7 +4,8 @@ class HyperParmaters():
                  tokenizer_type='file', stop_words=[], model_save_path = None,
                  epochs_per_save = 10,
                  save_tokenizer = False,
-                 tokenizer_save_path = None):
+                 tokenizer_save_path = None,
+                 sample_display = '两个黄鹂鸣翠柳'):
 
         self.tokenizer_type = tokenizer_type
         self.tokenizer_file = tokenizer_file
@@ -23,3 +24,4 @@ class HyperParmaters():
         self.learning_rate = learning_rate
         self.model_save_path = model_save_path
         self.epochs_per_save = epochs_per_save
+        self.sample_display = sample_display

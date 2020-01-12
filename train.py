@@ -64,7 +64,7 @@ def evaluate_training(sentence, tokenizer, encoder, decoder, hidden_units):
 
         decoder_input = tf.expand_dims([predicted_id], 0)
 
-    return results[:-1], sentence, attention_weights
+    return results, sentence, attention_weights
 
 
 
@@ -98,7 +98,7 @@ def train(hyperparmeters:HyperParmaters):
         encoder_path = os.path.join(hyperparmeters.model_save_path, 'encoder')
         decoder_path = os.path.join(hyperparmeters.model_save_path, 'decoder')
 
-    sample = '春花秋月何时了'
+    sample = hyperparmeters.sample_display
     for epoch in range(hyperparmeters.epochs):
         total_loss = 0
 
