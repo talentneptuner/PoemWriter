@@ -98,7 +98,7 @@ def train(hyperparmeters:HyperParmaters):
         encoder_path = os.path.join(hyperparmeters.model_save_path, 'encoder')
         decoder_path = os.path.join(hyperparmeters.model_save_path, 'decoder')
 
-    sample = '两个黄鹂鸣翠柳'
+    sample = '春花秋月何时了'
     for epoch in range(hyperparmeters.epochs):
         total_loss = 0
 
