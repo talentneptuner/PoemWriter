@@ -44,4 +44,4 @@ Epoch : 3, batch : 400, loss : 0.55547, sample : 人世几回伤往事, result :
 Epoch : 3, batch : 500, loss : 0.55261, sample : 人世几回伤往事, result : 人间无事可堪悲<eos>   
 Epoch : 3, batch : 600, loss : 0.56802, sample : 人世几回伤往事, result : 故乡何处是今年<eos>    
 Epoch : 3, batch : 700, loss : 0.56088, sample : 人世几回伤往事, result : 山中无事亦无穷<eos>    
-*epoch 9 batch 100 出现了 result:山形依旧枕寒流
+*epoch 9 batch 100 出现了 result:山形依旧枕寒流*
