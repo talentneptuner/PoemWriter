@@ -12,5 +12,6 @@ if __name__ == '__main__':
                                      epochs_per_save=1,
                                      tokenizer_save_path='./tokeinzer',
                                      model_save_path='./model',
-                                     sample_display='窗含西岭千秋雪')
+                                     sample_display='窗含西岭千秋雪',
+                                     attention_type='google')
     train(hyperparameters)

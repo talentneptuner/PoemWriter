@@ -7,7 +7,11 @@
 
 ### 程序运行方式
 运行main.py     
-超参数在main.py指定    
+超参数在main.py指定  
+提供三种attention的方式
+- bahdanau attention: attention_type为bahdanau
+- luong attention: attention_type为luong
+- attention is all you need: attention_type为google
 
 ### 训练示例
 Epoch : 1, batch : 0, loss : 1.09479, sample : 窗含西岭千秋雪, result : 郑<eos><eos><eos>卢<eos><eos>嗣                  
