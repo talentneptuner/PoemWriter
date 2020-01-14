@@ -57,8 +57,7 @@ def evaluate_training(sentence, tokenizer, encoder, decoder, hidden_units):
         predictions, decoder_hidden, weights = decoder(
             decoder_input, decoder_hidden,
             encoder_output)  # attention_weights : (1, input_length, 1) predictions: (1, vocab_size)
-        attention_weights[:, t] = tf.reshape(weights, (-1,)).numpy()
-        print(attention_weights)
+        attention_weights[t + 1] = tf.reshape(weights, (-1,)).numpy()
 
         predicted_id = tf.argmax(predictions[0]).numpy()
 
@@ -145,6 +144,14 @@ def evaluate_sample(hyperparmeters:HyperParmaters, plot_weight=True):
     sample_result, sample, weights = evaluate_training(
         sample, tokenizer, encoder, decoder, hyperparmeters.hidden_units)
     print(f'sample: {sample}, result: {sample_result}')
+
+    if plot_weight:
+        plt.matshow(weights)
+        plt.rcParams['font.family'] = ['sans-serif']
+        plt.rcParams['font.sans-serif'] = ['SimHei']
+        plt.xticks(range(0, 10), ['<eos>'] + list(sample) + ['<bos>'])
+        plt.yticks(range(0, 10), ['<eos>'] + list(sample_result[0:7]) + ['<bos>'])
+        plt.show()
 
 
 

@@ -10,6 +10,6 @@ if __name__ == '__main__':
                                      epochs = 10,
                                      batch_size=64,
                                      model_save_path='./model',
-                                     sample_display='万里悲秋常作客',
+                                     sample_display='一去紫台连朔漠',
                                      attention_type='google')
     evaluate_sample(hyperparameters)
