@@ -1,6 +1,7 @@
 import tensorflow as tf
 from datetime import datetime
 from tensorflow import keras
+from matplotlib import pyplot as plt
 
 from preprecessing import *
 from hyperParameters import HyperParmaters
@@ -57,6 +58,7 @@ def evaluate_training(sentence, tokenizer, encoder, decoder, hidden_units):
             decoder_input, decoder_hidden,
             encoder_output)  # attention_weights : (1, input_length, 1) predictions: (1, vocab_size)
         attention_weights[:, t] = tf.reshape(weights, (-1,)).numpy()
+        print(attention_weights)
 
         predicted_id = tf.argmax(predictions[0]).numpy()
 
@@ -122,6 +124,31 @@ def train(hyperparmeters:HyperParmaters):
         sample_result, sample, weights = evaluate_training(
             sample, tokenizer, encoder, decoder, hyperparmeters.hidden_units)
         print(f'Epoch : {epoch + 1}, loss : {total_loss/steps_per_epoch:.5f}, sample : {sample}, result : {sample_result}')
+
+
+def evaluate_sample(hyperparmeters:HyperParmaters, plot_weight=True):
+    tokenizer = Tokenizer('json')
+    tokenizer.fit(hyperparmeters.tokenizer_file)
+    encoder = Seq2SeqEncoder(len(tokenizer.vocab),
+                             hyperparmeters.embedding_dims,
+                             hyperparmeters.hidden_units)
+    decoder = Seq2SeqDecoder(len(tokenizer.vocab),
+                             hyperparmeters.embedding_dims,
+                             hyperparmeters.hidden_units,
+                             attention_type=hyperparmeters.attention_type,
+                             combined='concat')
+    encoder_path = os.path.join(hyperparmeters.model_save_path, 'encoder')
+    decoder_path = os.path.join(hyperparmeters.model_save_path, 'decoder')
+    encoder.load_weights(tf.train.latest_checkpoint(encoder_path))
+    decoder.load_weights(tf.train.latest_checkpoint(decoder_path))
+    sample = hyperparmeters.sample_display
+    sample_result, sample, weights = evaluate_training(
+        sample, tokenizer, encoder, decoder, hyperparmeters.hidden_units)
+    print(f'sample: {sample}, result: {sample_result}')
+
+
+
+
 
 
 

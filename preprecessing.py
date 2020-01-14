@@ -25,7 +25,9 @@ class Tokenizer():
         if self.fit_source == 'json':
             with open(filename, 'r', encoding='utf-8') as f:
                 self.atom = json.load(f)
-                self.vocab = [self.atom[k] for k in self.atom]
+                self.vocab = [''] * len(self.atom)
+                for k in self.atom:
+                    self.vocab[self.atom[k]] = k
         return self.vocab, self.atom
 
     def idx_to_se(self,indices):

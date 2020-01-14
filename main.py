@@ -10,8 +10,8 @@ if __name__ == '__main__':
                                      batch_size=64,
                                      save_tokenizer=True,
                                      epochs_per_save=1,
-                                     tokenizer_save_path='./tokeinzer',
+                                     tokenizer_save_path='./tokenizer',
                                      model_save_path='./model',
-                                     sample_display='窗含西岭千秋雪',
+                                     sample_display='万里悲秋常作客',
                                      attention_type='google')
     train(hyperparameters)
